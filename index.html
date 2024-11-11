@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер текста</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            font-size: 16px;
+            margin: 10px;
+            padding: 10px;
+        }
+        .footer {
+            color: red;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Конвертер текста в Юникоды</h1>
+    <input type="text" id="inputText" placeholder="Введите слово" />
+    <button onclick="convertText()">Конвертировать</button>
+    <p>Результат: <span id="result"></span></p>
+    <button onclick="copyToClipboard()">Скопировать</button>
+
+    <p class="footer">Created by Viktor with help of Mefrreex</p>
+
+    <script>
+        // Таблица замены символов
+        const charMap = {
+            'а': '뜀', 'б': '뜁', 'в': '뜂', 'г': '뜃', 'д': '뜄',
+            'е': '뜅', 'ё': '뜅', 'ж': '뜆', 'з': '뜇', 'и': '뜈',
+            'й': '뜉', 'к': '뜊', 'л': '뜋', 'м': '뜌', 'н': '뜍',
+            'о': '뜎', 'п': '뜏', 'р': '뜐', 'с': '뜑', 'т': '뜒',
+            'у': '뜓', 'ф': '뜔', 'х': '뜕', 'ц': '뜞', 'ч': '뜖',
+            'ш': '뜗', 'щ': '뜘', 'ъ': '뜝', 'ы': '뜙', 'ь': '뜝',
+            'э': '뜚', 'ю': '뜛', 'я': '뜜'
+        };
+
+        function convertText() {
+            const inputText = document.getElementById("inputText").value.toLowerCase();
+            let result = '';
+            for (let char of inputText) {
+                result += charMap[char] || char; // Заменяем символ или оставляем его
+            }
+            document.getElementById("result").textContent = result;
+        }
+
+        function copyToClipboard() {
+            const resultText = document.getElementById("result").textContent;
+            navigator.clipboard.writeText(resultText).then(() => {
+                alert("Текст скопирован в буфер обмена!");
+            }).catch(err => {
+                alert("Не удалось скопировать текст: " + err);
+            });
+        }
+    </script>
+</body>
+</html>
