@@ -23,8 +23,8 @@
         }
         /* Стиль для подчеркивания и ссылки */
         .footer a {
-            text-decoration: underline; /* Подчеркивание */
-            color: red; /* Красный цвет текста */
+            text-decoration: underline;  /* Подчеркивание */
+            color: red;                  /* Красный цвет текста */
         }
     </style>
 </head>
@@ -35,11 +35,9 @@
     <p>Результат: <span id="result"></span></p>
     <button onclick="copyToClipboard()">Скопировать</button>
 
-    <!-- Добавлена ссылка с подчеркиванием на Meffreex -->
-    <p class="footer">Created by Viktor with help of <a href="https://mefrreex.luminia.fun" target="_blank">Meffreex</a></p>
+    <p class="footer">Created by Viktor with help of <a href="https://mefrreex.luminia.fun" target="_blank">MEFRREEX</a></p>
 
     <script>
-        // Таблица замены символов
         const charMap = {
             'а': '뜀', 'б': '뜁', 'в': '뜂', 'г': '뜃', 'д': '뜄',
             'е': '뜅', 'ё': '뜅', 'ж': '뜆', 'з': '뜇', 'и': '뜈',
@@ -54,7 +52,7 @@
             const inputText = document.getElementById("inputText").value.toLowerCase();
             let result = '';
             for (let char of inputText) {
-                result += charMap[char] || char; // Заменяем символ или оставляем его
+                result += charMap[char] || char;
             }
             document.getElementById("result").textContent = result;
         }
